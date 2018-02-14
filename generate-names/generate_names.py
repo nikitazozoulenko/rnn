@@ -64,11 +64,11 @@ def main():
     parser = make_parser()
     args = parser.parse_args()
     assert_args_are_correct(args, lang.all_letters)
-    model = torch.load("savedir/name_generator_it40k.pt")
+    
     if args.use_cuda:
-        model = model.cuda()
+        model = torch.load("savedir/name_generator_it40k.pt").cuda()
     else:
-        model = model.cpu()
+        model = torch.load("savedir/name_generator_it40k.pt", map_location = {'cuda:0' : 'cpu'}).cpu()
 
     for i in range(args.num_names):
         name = generate_name(model, lang, args.start_character, args.randomness, args.use_cuda)

@@ -12,7 +12,7 @@ if __name__ == "__main__":
     data_feeder = DataFeeder()
     lang = data_feeder.lang
     
-    model = RNNWithEmbeddings(64, 128, 2, lang.vocab_size).cuda()
+    model = RNNWithEmbeddings(128, 128, 3, lang.vocab_size).cuda()
     loss = Loss().cuda()
 
     learning_rate = 0.1
@@ -20,8 +20,8 @@ if __name__ == "__main__":
                           momentum = 0.9, weight_decay=0.00001)
 
     losses = []
-    batch_size = 16
-    num_iterations = 40000
+    batch_size = 1
+    num_iterations = 1000
     for i in range(num_iterations):
         model.zero_grad()
 
