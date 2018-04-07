@@ -24,7 +24,7 @@ class RNNWithEmbeddings(nn.Module):
         # Before we've done anything, we dont have any hidden state.
         # Refer to the Pytorch documentation to see exactly
         # why they have this dimensionality.
-        # The axes semantics are (num_layers, minibatch_size, hidden_dim)
+        # The waxes semantics are (num_layers, minibatch_size, hidden_dim)
         tensor = torch.zeros(self.n_layers, batch_size, self.hidden_size)
         if use_cuda:
             tensor = tensor.cuda()
